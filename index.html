@@ -4,20 +4,190 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ocalyptus Studios</title>
+  <meta name="description" content="Ocalyptus Studios — öğrenmesi kolay, bırakması zor mobil oyunlar yapan bağımsız stüdyo.">
+  <meta property="og:title" content="Ocalyptus Studios">
+  <meta property="og:description" content="Öğrenmesi kolay, bırakması zor mobil oyunlar.">
+  <meta property="og:image" content="https://ocalyptusstudios.github.io/pop-tower-icon.svg">
+  <meta name="theme-color" content="#5fb8e6">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 4rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
-    h1 { margin-bottom: .25rem; }
-    a { color: #0b5fff; }
+    :root {
+      --sky-top: #5fb8e6;
+      --sky-bottom: #cdeefc;
+      --ink: #14324a;
+      --ink-soft: #46647a;
+      --card: #ffffff;
+      --accent: #ff7a59;
+      --accent-dark: #e85d3c;
+      --sun: #ffd166;
+      --line: rgba(20, 50, 74, .12);
+      --shadow: 0 18px 40px -18px rgba(20, 50, 74, .45);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --sky-top: #0d2236;
+        --sky-bottom: #1c3d5a;
+        --ink: #eaf4fb;
+        --ink-soft: #a9c2d4;
+        --card: #13293d;
+        --line: rgba(234, 244, 251, .12);
+        --shadow: 0 18px 40px -18px rgba(0, 0, 0, .7);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 70%) fixed;
+      background-color: var(--sky-bottom);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+    /* Floating clouds */
+    .clouds { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .cloud {
+      position: absolute; width: 180px; height: 60px; background: #fff; border-radius: 60px; opacity: .75;
+      animation: drift linear infinite;
+    }
+    .cloud::before, .cloud::after { content: ""; position: absolute; background: #fff; border-radius: 50%; }
+    .cloud::before { width: 80px; height: 80px; top: -40px; left: 28px; }
+    .cloud::after { width: 100px; height: 100px; top: -55px; right: 22px; }
+    .c1 { top: 12%; animation-duration: 70s; animation-delay: -10s; }
+    .c2 { top: 38%; transform: scale(.7); animation-duration: 95s; animation-delay: -50s; opacity: .55; }
+    .c3 { top: 64%; transform: scale(.55); animation-duration: 120s; animation-delay: -80s; opacity: .45; }
+    @keyframes drift { from { left: -240px; } to { left: 110%; } }
+    @media (prefers-color-scheme: dark) { .cloud { opacity: .06 !important; } }
+    @media (prefers-reduced-motion: reduce) { .cloud { animation: none; left: 10%; } .c2 { left: 60%; } .c3 { left: 30%; } }
+
+    /* Header */
+    header { padding: 22px 0; }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.35rem; }
+    .brand img { width: 36px; height: 36px; }
+    .nav-links { display: flex; gap: 18px; font-weight: 500; }
+    .nav-links a { text-decoration: none; opacity: .85; }
+    .nav-links a:hover { opacity: 1; text-decoration: underline; }
+
+    /* Hero */
+    .hero { text-align: center; padding: 64px 0 80px; }
+    .hero h1 {
+      font-family: "Baloo 2", sans-serif; font-weight: 800; line-height: 1.05;
+      font-size: clamp(2.6rem, 8vw, 4.6rem); margin: 0 0 14px; letter-spacing: -.01em;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p { font-size: clamp(1.05rem, 2.4vw, 1.25rem); color: var(--ink-soft); max-width: 560px; margin: 0 auto 32px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 999px;
+      background: var(--accent); color: #fff; font-weight: 600; text-decoration: none;
+      box-shadow: 0 6px 0 var(--accent-dark), var(--shadow); transition: transform .12s, box-shadow .12s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 var(--accent-dark), var(--shadow); }
+    .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--accent-dark), var(--shadow); }
+    .btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+    /* Sections */
+    section { padding: 24px 0 56px; }
+    h2 { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 2rem; margin: 0 0 20px; }
+
+    .game {
+      display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: center;
+      background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 32px; box-shadow: var(--shadow);
+    }
+    .game img { width: 100%; max-width: 200px; border-radius: 22%; box-shadow: 0 12px 30px -12px rgba(20,50,74,.5); animation: bob 4s ease-in-out infinite; }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+    @media (prefers-reduced-motion: reduce) { .game img { animation: none; } }
+    .game h3 { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.8rem; margin: 0; line-height: 1.2; }
+    .tag { display: inline-block; font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-bottom: 6px; }
+    .game p { color: var(--ink-soft); margin: 10px 0 20px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; padding: 0; list-style: none; }
+    .chips li { font-size: .85rem; padding: 4px 12px; border-radius: 999px; background: rgba(95, 184, 230, .18); border: 1px solid var(--line); }
+    .game-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+    .link { font-weight: 500; color: var(--ink-soft); }
+    .link:hover { color: var(--ink); }
+
+    .contact {
+      text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 40px 24px; box-shadow: var(--shadow);
+    }
+    .contact p { color: var(--ink-soft); margin: 0 0 18px; }
+    .mail { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: clamp(1.15rem, 4vw, 1.6rem); color: var(--accent); text-decoration: none; word-break: break-all; }
+    .mail:hover { text-decoration: underline; }
+
+    footer { text-align: center; padding: 24px 0 40px; font-size: .9rem; color: var(--ink-soft); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 40px 0 56px; }
+      .game { grid-template-columns: 1fr; text-align: center; padding: 28px 22px; }
+      .game img { max-width: 150px; margin: 0 auto; }
+      .chips, .game-actions { justify-content: center; }
+    }
   </style>
 </head>
 <body>
-  <h1>Ocalyptus Studios</h1>
-  <p>Mobil oyun stüdyosu.</p>
-  <h2>Oyunlar</h2>
-  <ul>
-    <li><a href="https://play.google.com/store/apps/details?id=com.ocalyptusstudios.balancedrop">Pop Tower: Denge Kulesi</a>
-      &middot; <a href="https://ocalyptusstudios.github.io/pop-tower-privacy/">Gizlilik Politikası</a></li>
-  </ul>
-  <p>İletişim: <a href="mailto:ocalyptusstudios@gmail.com">ocalyptusstudios@gmail.com</a></p>
+  <div class="clouds" aria-hidden="true">
+    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <nav>
+        <a class="brand" href="#"><img src="favicon.svg" alt="">Ocalyptus Studios</a>
+        <div class="nav-links">
+          <a href="#oyunlar">Oyunlar</a>
+          <a href="#iletisim">İletişim</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Küçük oyunlar,<br><span>büyük eğlence.</span></h1>
+        <p>Ocalyptus Studios, birkaç saniyede öğrenilen ama bırakması zor mobil oyunlar geliştiren bağımsız bir stüdyo.</p>
+        <a class="btn" href="#oyunlar">Oyunlarımızı keşfet</a>
+      </div>
+
+      <section id="oyunlar">
+        <h2>Oyunlar</h2>
+        <article class="game">
+          <img src="pop-tower-icon.svg" alt="Pop Tower oyun ikonu" width="200" height="200">
+          <div>
+            <span class="tag">Şimdi Google Play'de</span>
+            <h3>Pop Tower: Denge Kulesi</h3>
+            <p>Kutuları dikkatlice bırak, dengeyi koru ve kuleni gökyüzüne kadar yükselt. Tek dokunuşla oynanan, fizik tabanlı bir denge oyunu.</p>
+            <ul class="chips">
+              <li>Fizik</li><li>Denge</li><li>Tek dokunuş</li><li>Ücretsiz</li>
+            </ul>
+            <div class="game-actions">
+              <a class="btn" href="https://play.google.com/store/apps/details?id=com.ocalyptusstudios.balancedrop">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zm13.3 13.3-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2h-.1zm-.1.1L13.4 12 3.6 21.8c.4.4 1 .4 1.7.1l11.5-6.7M16.8 8.8 5.3 2.1c-.7-.4-1.3-.3-1.7.1l9.8 9.8 3.4-3.2z"/></svg>
+                Google Play'den indir
+              </a>
+              <a class="link" href="https://ocalyptusstudios.github.io/pop-tower-privacy/">Gizlilik Politikası</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="iletisim">
+        <div class="contact">
+          <h2>İletişim</h2>
+          <p>Soru, öneri ya da iş birliği için bize yazabilirsin.</p>
+          <a class="mail" href="mailto:ocalyptusstudios@gmail.com">ocalyptusstudios@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="year">2026</span> Ocalyptus Studios</footer>
+  </div>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
