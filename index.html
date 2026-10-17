@@ -7,9 +7,10 @@
   <meta name="description" content="Ocalyptus Studios — öğrenmesi kolay, bırakması zor mobil oyunlar yapan bağımsız stüdyo.">
   <meta property="og:title" content="Ocalyptus Studios">
   <meta property="og:description" content="Öğrenmesi kolay, bırakması zor mobil oyunlar.">
-  <meta property="og:image" content="https://play-lh.googleusercontent.com/Cb4YM2Jszry_9BXgJRu4zWWMz5-R_TP11HuQk0zttBdakuriyObws9BykuXUeX_uhboKHTzlhhcpx3Wg_FJovA=s512">
+  <meta property="og:image" content="https://ocalyptusstudios.github.io/brand/ocalyptus-icon-512.png">
   <meta name="theme-color" content="#5fb8e6">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="brand/ocalyptus-icon-512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -71,8 +72,10 @@
     /* Header */
     header { padding: 22px 0; }
     nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.35rem; }
-    .brand img { width: 36px; height: 36px; }
+    .brand { display: flex; align-items: center; text-decoration: none; }
+    .brand img { height: 44px; width: auto; }
+    .brand .on-dark { display: none; }
+    @media (prefers-color-scheme: dark) { .brand .on-light { display: none; } .brand .on-dark { display: block; } }
     .nav-links { display: flex; gap: 18px; font-weight: 500; }
     .nav-links a { text-decoration: none; opacity: .85; }
     .nav-links a:hover { opacity: 1; text-decoration: underline; }
@@ -140,7 +143,7 @@
   <div class="wrap">
     <header>
       <nav>
-        <a class="brand" href="#"><img src="favicon.svg" alt="">Ocalyptus Studios</a>
+        <a class="brand" href="#" aria-label="Ocalyptus Studios"><img class="on-light" src="brand/ocalyptus-logo.svg" alt="Ocalyptus Studios"><img class="on-dark" src="brand/ocalyptus-logo-white.svg" alt=""></a>
         <div class="nav-links">
           <a href="#oyunlar">Oyunlar</a>
           <a href="#iletisim">İletişim</a>
