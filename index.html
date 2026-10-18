@@ -47,7 +47,13 @@
     .nav-links a:hover { color: var(--ink); }
 
     /* Hero */
-    .hero { padding: 120px 0 96px; border-bottom: 1px solid var(--line); }
+    .hero { padding: 120px 0 96px; border-bottom: 1px solid var(--line); overflow: hidden; }
+    .hero .wrap { position: relative; }
+    .hero h1 { position: relative; }
+    .hero-mark {
+      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+      width: 520px; height: 520px; opacity: .05; pointer-events: none;
+    }
     .hero h1 { font-size: clamp(2.5rem, 7vw, 5.25rem); font-weight: 700; line-height: 1.02; max-width: 15ch; }
     .hero h1 span { color: var(--green-bright); }
     .hero-foot { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 12px 40px; color: var(--ink-soft); font-size: .95rem; }
@@ -120,6 +126,7 @@
     @media (max-width: 560px) {
       .nav-links { display: none; }
       .hero { padding: 72px 0 64px; }
+      .hero-mark { width: 320px; height: 320px; right: -120px; }
       section { padding: 72px 0; }
       .game { grid-template-columns: 1fr; padding: 32px 0; }
       .game-art { width: 100%; max-width: 240px; }
@@ -145,6 +152,7 @@
   <main>
     <div class="hero">
       <div class="wrap">
+        <img class="hero-mark" src="brand/ocalyptus-mark-white.svg" alt="" aria-hidden="true">
         <h1>Mobil oyunlar geliştiren bağımsız bir stüdyo<span>.</span></h1>
       </div>
     </div>
